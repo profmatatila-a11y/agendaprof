@@ -264,8 +264,9 @@ const NovaTurma: React.FC = () => {
                                                 <span className="text-[8px] font-black text-slate-400 uppercase ml-1 tracking-widest">Início</span>
                                                 <input
                                                     required
-                                                    type="time"
+                                                    type="text"
                                                     className="w-full bg-white border border-slate-100 rounded-2xl h-12 px-4 text-sm font-bold outline-none"
+                                                    placeholder="00:00"
                                                     value={sched.startTime}
                                                     onChange={(e) => updateSchedule(index, 'startTime', e.target.value)}
                                                 />
@@ -274,8 +275,9 @@ const NovaTurma: React.FC = () => {
                                                 <span className="text-[8px] font-black text-slate-400 uppercase ml-1 tracking-widest">Término</span>
                                                 <input
                                                     required
-                                                    type="time"
+                                                    type="text"
                                                     className="w-full bg-white border border-slate-100 rounded-2xl h-12 px-4 text-sm font-bold outline-none"
+                                                    placeholder="00:00"
                                                     value={sched.endTime}
                                                     onChange={(e) => updateSchedule(index, 'endTime', e.target.value)}
                                                 />
