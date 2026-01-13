@@ -86,6 +86,22 @@ const NovaTurma: React.FC = () => {
         setSchedules(newSchedules);
     };
 
+    const handleTimeChange = (index: number, field: 'startTime' | 'endTime', value: string) => {
+        // Remove tudo que não for número
+        const digits = value.replace(/\D/g, '');
+
+        // Limita a 4 dígitos
+        const limited = digits.substring(0, 4);
+
+        // Aplica a máscara HH:MM
+        let masked = limited;
+        if (limited.length > 2) {
+            masked = `${limited.substring(0, 2)}:${limited.substring(2)}`;
+        }
+
+        updateSchedule(index, field, masked);
+    };
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setLoading(true);
@@ -268,7 +284,7 @@ const NovaTurma: React.FC = () => {
                                                     className="w-full bg-white border border-slate-100 rounded-2xl h-12 px-4 text-sm font-bold outline-none"
                                                     placeholder="00:00"
                                                     value={sched.startTime}
-                                                    onChange={(e) => updateSchedule(index, 'startTime', e.target.value)}
+                                                    onChange={(e) => handleTimeChange(index, 'startTime', e.target.value)}
                                                 />
                                             </div>
                                             <div className="space-y-1">
@@ -279,7 +295,7 @@ const NovaTurma: React.FC = () => {
                                                     className="w-full bg-white border border-slate-100 rounded-2xl h-12 px-4 text-sm font-bold outline-none"
                                                     placeholder="00:00"
                                                     value={sched.endTime}
-                                                    onChange={(e) => updateSchedule(index, 'endTime', e.target.value)}
+                                                    onChange={(e) => handleTimeChange(index, 'endTime', e.target.value)}
                                                 />
                                             </div>
                                         </div>
