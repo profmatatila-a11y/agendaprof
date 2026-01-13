@@ -42,21 +42,23 @@ const Dashboard: React.FC = () => {
 
   return (
     <div className="pb-24">
-      <header className="sticky top-0 z-40 bg-white/80 backdrop-blur-md px-4 py-4 border-b border-slate-100 flex items-center justify-end">
-        <div className="flex gap-2">
-          <button className="size-10 flex items-center justify-center rounded-full hover:bg-slate-100">
-            <span className="material-symbols-outlined text-slate-600">search</span>
-          </button>
-          <button className="size-10 flex items-center justify-center rounded-full hover:bg-slate-100 relative">
-            <span className="material-symbols-outlined text-slate-600">notifications</span>
-            <span className="absolute top-2 right-2 size-2 bg-red-500 rounded-full border-2 border-white"></span>
-          </button>
+      <main className="max-w-md mx-auto px-4 mt-12">
+        <div className="flex items-center justify-between mb-1">
+          <div>
+            <h1 className="text-3xl font-bold tracking-tight text-slate-900">Olá, Átila!</h1>
+            <p className="text-slate-500 text-base mt-1">{finalDate}</p>
+          </div>
+          <div className="size-16 rounded-full border-4 border-white shadow-lg overflow-hidden bg-slate-200 flex-shrink-0">
+            <img
+              src="/avatar.jpg"
+              alt="Avatar"
+              className="w-full h-full object-cover"
+              onError={(e) => {
+                (e.target as HTMLImageElement).src = 'https://api.dicebear.com/7.x/avataaars/svg?seed=Atila';
+              }}
+            />
+          </div>
         </div>
-      </header>
-
-      <main className="max-w-md mx-auto px-4 mt-6">
-        <h1 className="text-3xl font-bold tracking-tight text-slate-900">Olá, Átila!</h1>
-        <p className="text-slate-500 text-base mt-1">{finalDate}</p>
 
         <section className="mt-6">
           {loading ? (
